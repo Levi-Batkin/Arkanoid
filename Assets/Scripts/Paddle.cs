@@ -12,7 +12,6 @@ public class Paddle : MonoBehaviour
     void Start()
     {
         PlayerPrefs.SetInt("score", 0);
-        Instantiate(ballprefab, new Vector3(-0.03f,-3.40f,0).normalized, Quaternion.identity);
         rb = GetComponent<Rigidbody2D>();
         gyro = Input.gyro;
         gyro.enabled = true;
@@ -25,6 +24,6 @@ public class Paddle : MonoBehaviour
     }
     void FixedUpdate(){
         Vector3 movement = new Vector3 (-Input.gyro.attitude.y, 0.0f, 0.0f);
-        rb.velocity = movement * speed * 90f;
+        rb.velocity = movement * speed * 40f;
     }
 }

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class DestroyBall : MonoBehaviour
 {
-    public GameObject lives3, lives2, lives1, lives0;
-    public GameObject ballprefab;
+    public GameObject lives3, lives2, lives1, lives0, ball3, ball2, ball1;
     int lives = 3;
     // Start is called before the first frame update
     void Start()
@@ -27,12 +26,15 @@ public class DestroyBall : MonoBehaviour
         {
             Destroy(col.gameObject);
             lives--;
-            if(lives != 0)
+            if(lives == 3)
             {
-                Instantiate(ballprefab, new Vector3(-0.03f,-3.40f,0), Quaternion.identity);
+                ball3.SetActive(true);
+                ball2.SetActive(false);
+                ball1.SetActive(false);
             }
             if(lives == 2)
             {
+                ball2.SetActive(true);
                 lives3.SetActive(false);
                 lives2.SetActive(true);
                 lives1.SetActive(false);
@@ -40,6 +42,7 @@ public class DestroyBall : MonoBehaviour
             }
             if(lives == 1)
             {
+                ball1.SetActive(true);
                 lives3.SetActive(false);
                 lives2.SetActive(false);
                 lives1.SetActive(true);
