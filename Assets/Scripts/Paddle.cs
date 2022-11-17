@@ -24,6 +24,6 @@ public class Paddle : MonoBehaviour
     }
     void FixedUpdate(){
         Vector3 movement = new Vector3 (-Input.gyro.attitude.y, 0.0f, 0.0f);
-        rb.velocity = movement * speed * 40f;
+        rb.velocity = movement * speed * 35f;
     }
 }

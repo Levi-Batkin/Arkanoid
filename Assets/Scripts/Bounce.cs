@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bounce : MonoBehaviour
 {
+    public AudioSource up;
     Vector3 velocityval;
     float speed;
     Rigidbody2D rb;
@@ -18,6 +19,7 @@ public class Bounce : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
+        up.Play(0);
         speed = velocityval.magnitude;
         var direction = Vector3.Reflect(velocityval.normalized, col.contacts[0].normal);
 

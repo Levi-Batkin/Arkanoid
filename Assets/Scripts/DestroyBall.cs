@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
+using TMPro;
 public class DestroyBall : MonoBehaviour
 {
+    public AudioSource gameOver;
     public GameObject lives3, lives2, lives1, lives0, ball3, ball2, ball1;
+    public TextMeshProUGUI gameOverText;  
     int lives = 3;
     // Start is called before the first frame update
     void Start()
@@ -13,6 +16,18 @@ public class DestroyBall : MonoBehaviour
         lives2.SetActive(false);
         lives1.SetActive(false);
         lives0.SetActive(false);
+    }
+    IEnumerator GameOver()
+    {
+        gameOver.Play(0);
+        gameOverText.text = "Game Over!";
+        yield return new WaitForSeconds(2);
+        gameOverText.text = "";
+        AsyncOperation loadGame = SceneManager.LoadSceneAsync("Game");
+        while (!loadGame.isDone)
+        {
+            yield return null;
+        }
     }
 
     // Update is called once per frame
@@ -54,6 +69,7 @@ public class DestroyBall : MonoBehaviour
                 lives2.SetActive(false);
                 lives1.SetActive(false);
                 lives0.SetActive(true);
+                StartCoroutine(GameOver());
             }
         }
     }
