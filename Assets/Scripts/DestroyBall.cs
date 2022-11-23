@@ -12,6 +12,7 @@ public class DestroyBall : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Application.targetFrameRate = 60;
         lives3.SetActive(true);
         lives2.SetActive(false);
         lives1.SetActive(false);
